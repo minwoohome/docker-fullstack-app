@@ -44,6 +44,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        제발되면 좋겠다요...
         <ul>
           {list.map((item, index) => (
             <li key={index}>{item}</li>
