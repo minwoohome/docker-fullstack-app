@@ -12,15 +12,15 @@ script:
   - docker run -e CI=true docker-frontent-test yarn run test
 
 after_success:
-  - docker build -t docker-frontend ./frontend
-  - docker build -t docker-backend ./backend
-  - docker build -t docker-nginx ./nginx
+  - docker build -t project42da/docker-frontend ./frontend
+  - docker build -t project42da/docker-backend ./backend
+  - docker build -t project42da/docker-nginx ./nginx
 
   - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
 
-  - docker push docker-frontend
-  - docker push docker-backend
-  - docker push docker-nginx
+  - docker push project42da/docker-frontend
+  - docker push project42da/docker-backend
+  - docker push project42da/docker-nginx
 
 deploy:
   provider: elasticbeanstalk
@@ -30,7 +30,7 @@ deploy:
   bucket_name: elasticbeanstalk-ap-northeast-2-984774476028
   bucket_path: "docker-fullstack-app"
   on:
-    branch: main
+    branch: master
 
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_ACCESS_KEY
