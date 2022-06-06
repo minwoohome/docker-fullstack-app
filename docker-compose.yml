@@ -1,0 +1,27 @@
+version: '3'
+services:
+  frontend:
+    build: 
+      dockerfile: Dockerfile.dev # 개발환경을 위한 도커파일
+      context: ./frontend
+    volumes: # 코드 수정후 다시 빌드 없이 수정된 코드가 반영될 수 있도록 
+      - /app/node_modules
+      - ./frontend:/app
+    stdin_open: true
+
+  nginx:
+    restart: always # 재시작 정책(no, always, on-failure, unless-stopped)
+    build: 
+      dockerfile: Dockerfile
+      context: ./nginx
+    ports:
+      - "3000:80"
+
+  backend:
+    build: 
+      dockerfile: Dockerfile.dev
+      context: ./backend
+    container_name: app_backend # 컨테이너명 원하는대로
+    volumes:
+      - /app/node_modules
+      - ./backend:/app
