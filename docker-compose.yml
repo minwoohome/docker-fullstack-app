@@ -22,8 +22,8 @@ services:
       - ./backend:/app
     mem_limit: 128m
     environment: 
-      MYSQL_HOST: mysql 
-      MYSQL_USER: root
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: myapp
-      MYSQL_PORT: 3306 # 기본포트
+      MYSQL_HOST: $MYSQL_HOST # aws에서 넣어주나요?
+      MYSQL_USER: $MYSQL_USER 
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+      MYSQL_DATABASE: $MYSQL_DATABASE
+      MYSQL_PORT: $MYSQL_PORT
