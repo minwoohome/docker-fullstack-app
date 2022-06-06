@@ -36,7 +36,9 @@ function App() {
         return res.json();
       })
       .then((data) => {
-        setList(data.map((d) => d.value));
+        if (data) {
+          setList(data.map((d) => d.value));
+        }
       });
   }, []);
 

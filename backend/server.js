@@ -18,9 +18,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/api/values", (req, res, next) => {
-  console.log(req);
-  pool.query("SELECT * FROM lists", (err, results, fields) => {
+  console.log("/api/values");
+  pool.query("SELECT * FROM lists;", (err, results, fields) => {
     if (err) {
+      console.log(err);
       return res.status(500).send(err);
     } else {
       return res.json(results);

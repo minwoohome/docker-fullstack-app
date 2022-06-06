@@ -25,6 +25,12 @@ services:
     volumes:
       - /app/node_modules
       - ./backend:/app
+    environment:
+      MYSQL_HOST: mysql 
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: myapp
+      MYSQL_PORT: 3306 # 기본포트
   
   mysql:
     build: ./mysql
@@ -38,4 +44,3 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: myapp
-    platform: linux/x86_64
